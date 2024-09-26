@@ -133,9 +133,9 @@ const Login = () => {
                       </div>
                     </div>
                     <CRow className="login-footer">
-                      <CCol className="text-right">
-                        <Link to="/forgot-password">
-                          <CButton color="link" className="px-0">
+                      <CCol className="text-start">
+                        <Link to="/forgot-password" >
+                          <CButton color="link" className="px-0 text-decoration-none" >
                             Forgot password?
                           </CButton>
                         </Link>
@@ -143,7 +143,7 @@ const Login = () => {
                     </CRow>
                     <CRow className="login-footer">
                       <CCol className="text-right">
-                        Don't have an account? <Link to="/register">Sign Up</Link>
+                        Don't have an account? <Link to="/register" className='text-decoration-none'>Sign Up</Link>
                       </CCol>
                     </CRow>
                   </CForm>

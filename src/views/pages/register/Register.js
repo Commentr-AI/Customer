@@ -191,33 +191,33 @@ import { setCredentials } from '../../../app/features/auth/authSlice';
 import RedditIcon from '../login/Reddit-Icon';
 
 // List of country codes
-const countryCodes = [
-  { code: '+1', name: 'USA' },
-  { code: '+91', name: 'India' },
-  { code: '+44', name: 'UK' },
-  { code: '+61', name: 'Australia' },
-  { code: '+81', name: 'Japan' },
-  { code: '+49', name: 'Germany' },
-  { code: '+86', name: 'China' },
-  { code: '+33', name: 'France' },
-  { code: '+39', name: 'Italy' },
-  { code: '+34', name: 'Spain' },
-  { code: '+7', name: 'Russia' },
-  { code: '+55', name: 'Brazil' },
-  { code: '+27', name: 'South Africa' },
-  { code: '+82', name: 'South Korea' },
-  { code: '+52', name: 'Mexico' },
-  { code: '+64', name: 'New Zealand' },
-  // Add more countries as needed
-];
+// const countryCodes = [
+//   { code: '+1', name: 'USA' },
+//   { code: '+91', name: 'India' },
+//   { code: '+44', name: 'UK' },
+//   { code: '+61', name: 'Australia' },
+//   { code: '+81', name: 'Japan' },
+//   { code: '+49', name: 'Germany' },
+//   { code: '+86', name: 'China' },
+//   { code: '+33', name: 'France' },
+//   { code: '+39', name: 'Italy' },
+//   { code: '+34', name: 'Spain' },
+//   { code: '+7', name: 'Russia' },
+//   { code: '+55', name: 'Brazil' },
+//   { code: '+27', name: 'South Africa' },
+//   { code: '+82', name: 'South Korea' },
+//   { code: '+52', name: 'Mexico' },
+//   { code: '+64', name: 'New Zealand' },
+//   // Add more countries as needed
+// ];
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [countryCode, setCountryCode] = useState('+1'); // Default country code
+  // const [phoneNumber, setPhoneNumber] = useState('');
+  // const [countryCode, setCountryCode] = useState('+1'); // Default country code
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -312,7 +312,7 @@ const Register = () => {
                       required
                     />
                   </CInputGroup>
-                  <CInputGroup className="mb-3">
+                  {/* <CInputGroup className="mb-3">
                     <CInputGroupText className="p-0" style={{ minWidth: '150px' }}>
                       <CFormSelect
                         value={countryCode}
@@ -335,7 +335,7 @@ const Register = () => {
                       required
                       style={{ flexGrow: 1 }}
                     />
-                  </CInputGroup>
+                  </CInputGroup> */}
                   <CFormCheck
                     required
                     className="mb-4"
@@ -353,7 +353,7 @@ const Register = () => {
                   </div>
                   <div className="mt-3 text-center">
                     <span>Already have an account? </span>
-                    <a href="/login">Sign in</a>
+                    <a href="/login" className='text-decoration-none'>Sign in</a>
                   </div>
                 </CForm>
               </CCardBody>

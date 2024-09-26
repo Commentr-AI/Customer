@@ -24,7 +24,8 @@ const AppSidebar = () => {
   return (
     <CSidebar
       className="border-end"
-      colorScheme="dark"
+      // colorScheme="lightblue"
+      style={{backgroundColor:"rgb(224 242 254)", color:""}}
       position="fixed"
       unfoldable={unfoldable}
       visible={sidebarShow}
@@ -39,9 +40,11 @@ const AppSidebar = () => {
         <CCloseButton className="d-lg-none" dark onClick={() => dispatch(toggleChange(false))} />
       </CSidebarHeader>
       <AppSidebarNav items={navigation} />
-      <CSidebarFooter className="border-top d-none d-lg-flex">
-        <CSidebarToggler onClick={() => dispatch(toggleUnfold(!unfoldable))} />
+      <CSidebarFooter className="border-top d-flex align-items-center justify-content-center">
+        {/* <CSidebarToggler onClick={() => dispatch(toggleUnfold(!unfoldable))} /> */}
+        <div>Replies consumed</div>
       </CSidebarFooter>
+      
     </CSidebar>
   )
 }
