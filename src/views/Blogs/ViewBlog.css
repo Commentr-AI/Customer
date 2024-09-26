@@ -1,0 +1,39 @@
+.blog-container {
+  width: 80%;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.blog-title,
+.blog-image,
+.blog-description {
+  margin-bottom: 20px;
+}
+
+.blog-image label,
+.blog-description label {
+  font-weight: bold;
+  display: inline-block;
+  width: 120px;
+}
+
+.blog-title span {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.blog-title label {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.blog-image img {
+  display: block;
+  margin-top: 10px;
+}
+
+.blog-description div {
+  margin-top: 10px;
+}

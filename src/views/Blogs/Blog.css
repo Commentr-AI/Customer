@@ -1,0 +1,18 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-project-btn {
+  margin-left: auto;
+}
+
+.ctable td,
+.ctable th {
+  min-width: 100px; /* Adjust min-width as needed */
+}
+
+.action-btn {
+  margin-right: 5px;
+}

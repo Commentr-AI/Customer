@@ -1,0 +1,34 @@
+.editable-blog-container {
+  max-width: 600px;
+  margin: 0;
+}
+
+.editable-blog-field {
+  margin-bottom: 20px;
+}
+
+.editable-blog-field label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.editable-blog-actions {
+  text-align: right;
+}
+
+.editable-blog-field .ql-editor {
+  min-height: 300px; /* Adjust this height as needed */
+  line-height: 1.5; /* Ensure the line height is sufficient */
+}
+
+.loading {
+  opacity: 0.5;
+
+  pointer-events: none;
+}
