@@ -61,7 +61,7 @@ const Login = () => {
     e.preventDefault()
     try {
       const res = await login({ email, password}).unwrap()
-      console.log(res.user)
+      // console.log(res.user)
       dispatch(setCredentials({ ...res.user }))
       toast.success('Login Successful! Welcome back!.')
       navigate('/dashboard')

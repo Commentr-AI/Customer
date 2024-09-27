@@ -26,12 +26,16 @@ const AppHeaderDropdown = () => {
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
+  const user =useSelector((state)=>state.auth.userInfo)
+  // console.log(user);
 
   const { isAuthenticated } = useSelector((state) => state.auth)
+  console.log(isAuthenticated)
 
   const [logoutUser, { isLoading }] = useLogoutUserMutation()
 
   const logoutHandler = async () => {
+    console.log("logout button clicked")
     try {
       const res = await logoutUser()
       console.log('logout status', res)
@@ -67,13 +71,13 @@ const AppHeaderDropdown = () => {
           color="success"
           textColor="white"
         >
-          {'User'}
+          {user ? user.username :"User"}
         </CAvatar>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownItem onClick={() => navigate('/profile')} style={linkStyle}>
           <CIcon icon={cilUser} className="me-2" />
-          Profile
+          {user ? user.email :"Profile"}
         </CDropdownItem>
         <CDropdownItem onClick={() => navigate('/profile/change-password')} style={linkStyle}>
           <CIcon icon={cilSettings} className="me-2" />
