@@ -10,7 +10,7 @@ const PostsAndReplies =React.lazy(()=>import('./views/postsAndReplies/PostsAndRe
 const Users =React.lazy(()=>import('./views/users/Users.js'));
 const Plan =React.lazy(()=>import('./views/plan/Plan.js'));
 const Bilings =React.lazy(()=>import('./views/bilings/Bilings.js'))
-
+const Keywords = React.lazy(()=>import("./views/keywords/Keywords.js"))
 
 const Blog = React.lazy(() => import('./views/Blogs/Blog.js'))
 const AddBlog = React.lazy(() => import('./views/Blogs/AddBlog.js'))
@@ -26,6 +26,7 @@ const routes = [
   { path: '/users', name: 'Users', element: Users },
   { path: '/plan', name: 'Plan', element: Plan },
   { path: '/bilings', name: 'Bilings', element: Bilings},
+  { path: '/keywords', name: 'Keywords', element: Keywords},
 
   { path: '/profile', name: 'Profile', element: Profile },
   { path: '/profile/change-password', name: 'Change Password', element: ChangePassword },

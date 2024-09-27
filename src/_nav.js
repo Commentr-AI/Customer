@@ -28,6 +28,12 @@ const _nav = [
   },
   {
     component: CNavItem,
+    name: 'Keywords',
+    to: '/keywords',
+    icon: <CIcon icon={cilFile} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
     name: 'Posts & Replies',
     to: '/postsandreplies',
     icon: <CIcon icon={cilFile} customClassName="nav-icon" />,

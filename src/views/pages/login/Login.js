@@ -34,37 +34,39 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      })
-      const data = await res.json()
-      console.log(data)
-      if (data.status === 'success') {
-        navigate('/dashboard')
-      }
-    }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       credentials: 'include',
+  //     })
+  //     const data = await res.json()
+  //     console.log(data)
+  //     if (data.status === 'success') {
+  //       navigate('/dashboard')
+  //     }
+  //   }
 
-    fetchData()
-  }, [navigate])
+  //   fetchData()
+  // }, [navigate])
 
   const submitHandler = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await login({ username: email, password, role: 'admin' }).unwrap()
-      console.log(res)
-      dispatch(setCredentials({ ...res }))
-      toast.success('Login Successful! Welcome back!.')
-      navigate('/dashboard')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.data?.message || err.error)
-    }
+    // e.preventDefault()
+    // try {
+    //   const res = await login({ username: email, password, role: 'admin' }).unwrap()
+    //   console.log(res)
+    //   dispatch(setCredentials({ ...res }))
+    //   toast.success('Login Successful! Welcome back!.')
+    //   navigate('/dashboard')
+    // } catch (err) {
+    //   console.log(err)
+    //   toast.error(err?.data?.message || err.error)
+    // }
+
+    navigate('/dashboard')
   }
 
   return (
