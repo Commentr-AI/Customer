@@ -35,7 +35,7 @@ const AppSidebar = () => {
     >
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand to="/">
-          {/* <img src="/logo.png" alt="logo" height={32} width={165.23} /> */}
+          <img src="/logo.png" alt="logo" height={32} width={165.23} />
         </CSidebarBrand>
         <CCloseButton className="d-lg-none" dark onClick={() => dispatch(toggleChange(false))} />
       </CSidebarHeader>

@@ -26,45 +26,49 @@ import './Login.css' // Import the custom CSS file
 import RedditIcon from './Reddit-Icon';
 
 const Login = () => {
-  const [email, setEmail] = useState('')//neonflake
-  const [password, setPassword] = useState('')//Naveen@754
+  const [email, setEmail] = useState('vemulasrinu104@gmail.com')//vemulasrinu104@gmail.com
+  const [password, setPassword] = useState('Srinu53@')//Srinu53@
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const [login, { isLoading }] = useLoginMutation()
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       credentials: 'include',
-  //     })
-  //     const data = await res.json()
-  //     console.log(data)
-  //     if (data.status === 'success') {
-  //       navigate('/dashboard')
-  //     }
-  //   }
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
+      const data = await res.json()
+      console.log(data)
+      if (data.status === 'success') {
+        navigate('/dashboard')
+      }
+    }
 
-  //   fetchData()
-  // }, [navigate])
+    fetchData()
+  }, [navigate])
+
+  const redditHandler = ()=>{
+    window.location.href= `${import.meta.env.VITE_BASE_URL}/api/v1/auth/reddit`
+  }
 
   const submitHandler = async (e) => {
-    // e.preventDefault()
-    // try {
-    //   const res = await login({ username: email, password, role: 'admin' }).unwrap()
-    //   console.log(res)
-    //   dispatch(setCredentials({ ...res }))
-    //   toast.success('Login Successful! Welcome back!.')
-    //   navigate('/dashboard')
-    // } catch (err) {
-    //   console.log(err)
-    //   toast.error(err?.data?.message || err.error)
-    // }
+    e.preventDefault()
+    try {
+      const res = await login({ email, password}).unwrap()
+      console.log(res.user)
+      dispatch(setCredentials({ ...res.user }))
+      toast.success('Login Successful! Welcome back!.')
+      navigate('/dashboard')
+    } catch (err) {
+      console.log(err)
+      toast.error(err?.data?.message || err.error)
+    }
 
     navigate('/dashboard')
   }
@@ -77,13 +81,14 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4 login-card">
                 <CCardBody>
-                  <CForm onSubmit={submitHandler}>
+                  
                     <h1 className="login-header">Login</h1>
                     <div>
-                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' ><RedditIcon/><span className='ms-3'> Login with Reddit </span></button>
+                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' onClick ={redditHandler} ><RedditIcon/><span className='ms-3'> Login with Reddit </span></button>
                     </div>
                     <hr className='my-4'/>
                     <p className="text-body-secondary">Sign In to your account</p>
+                    <CForm onSubmit={submitHandler}>
                     <CInputGroup className="mb-3 login-input-group">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
@@ -110,21 +115,21 @@ const Login = () => {
                       />
                     </CInputGroup>
                     
-                    <div className="d-flex align-items-center justify-content-around">
-                      <div>
+                    <div className="d-flex align-items-center justify-content-between gap-3">
+                      <div className='w-50'>
                         <CButton
-                          color="primary"
-                          className="px-4"
+                          color="success"
+                          className="px-4 w-100  "
                           type="submit"
                           disabled={isLoading}
                         >
                           {isLoading ? <CSpinner size="sm" /> : 'Login'}
                         </CButton>
                       </div>
-                      <div>
+                      <div className='w-50 '>
                         <CButton
-                          color="primary"
-                          className="px-4"
+                          color="danger "
+                          className="px-4 w-100"
                           onClick={() => {
                             setEmail('')
                             setPassword('')

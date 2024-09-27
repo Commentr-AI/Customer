@@ -11,11 +11,12 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       state.isAuthenticated = true
       state.userInfo = action.payload
-      // localStorage.setItem('userInfo', JSON.stringify(action.payload))
+      console.log(state.userInfo)
+
+      localStorage.setItem('userInfo', JSON.stringify(action.payload))
     },
     logout: (state) => {
       state.isAuthenticated = false
-
       state.userInfo = null
 
       // localStorage.removeItem('userInfo')

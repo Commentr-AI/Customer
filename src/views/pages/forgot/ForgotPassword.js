@@ -33,8 +33,8 @@ const ForgotPassword = () => {
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md={9} lg={7} xl={6}>
-            <CCard className="mx-4">
-              <CCardBody className="p-4">
+            <div className="mx-4 rounded shadow">
+              <div className="p-4  ">
                 <CForm onSubmit={handleSubmit}>
                   <h1>Forgot Password</h1>
                   <p className="text-body-secondary">
@@ -60,12 +60,12 @@ const ForgotPassword = () => {
                       {isLoading ? 'Sending...' : 'Generate Password'}
                     </CButton>
                     <span style={{ marginTop: '10px' }}>
-                      If you know your password? Continue to <Link to={'/login'}>Sign in</Link>
+                      If you know your password? Continue to <Link className='text-decoration-none' to={'/login'}>Sign in</Link>
                     </span>
                   </div>
                 </CForm>
-              </CCardBody>
-            </CCard>
+              </div>
+            </div>
           </CCol>
         </CRow>
       </CContainer>

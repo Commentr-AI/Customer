@@ -212,10 +212,10 @@ import RedditIcon from '../login/Reddit-Icon';
 // ];
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [name, setName] = useState('Srinu');
+  const [email, setEmail] = useState('vemulasrinu104@gmail.com');
+  const [password, setPassword] = useState('Srinu53@');
+  const [repeatPassword, setRepeatPassword] = useState('Srinu53@');
   // const [phoneNumber, setPhoneNumber] = useState('');
   // const [countryCode, setCountryCode] = useState('+1'); // Default country code
 
@@ -238,13 +238,13 @@ const Register = () => {
       return toast.error('Password and Confirm password are not the same.');
     }
 
-    const fullPhoneNumber = `${countryCode}-${phoneNumber}`;
-
     try {
-      const res = await register({ name, email, password, role: 'admin', phoneNumber: fullPhoneNumber }).unwrap();
-      dispatch(setCredentials({ ...res }));
-      toast.success('Sign Up Successful! Welcome to the dashboard. 🚀');
-      navigate('/dashboard');
+      const res = await register({ username: name, email, password, role: 'user',}).unwrap();
+      console.log(res)
+      //dispatch(setCredentials({ ...res }));
+      console.log(res)
+      toast.success(res);
+      navigate('/otpverification',{state:email});
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -257,13 +257,14 @@ const Register = () => {
           <CCol md={9} lg={7} xl={6}>
             <CCard className="mx-4">
               <CCardBody className="p-4">
-                <CForm onSubmit={submitHandler}>
+                
                   <h1>Register</h1>
                   <div>
-                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' ><RedditIcon/><span className='ms-3'> Login with Reddit </span></button>
+                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' ><RedditIcon/><span className='ms-3'> SignUp with Reddit </span></button>
                     </div>
                     <hr className='my-4'/>
                   <p className="text-body-secondary">Create your admin account</p>
+                  <CForm onSubmit={submitHandler}>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
@@ -312,45 +313,37 @@ const Register = () => {
                       required
                     />
                   </CInputGroup>
-                  {/* <CInputGroup className="mb-3">
-                    <CInputGroupText className="p-0" style={{ minWidth: '150px' }}>
-                      <CFormSelect
-                        value={countryCode}
-                        onChange={(e) => setCountryCode(e.target.value)}
-                        required
-                        style={{ border: 'none' }}
-                      >
-                        {countryCodes.map((country) => (
-                          <option key={country.code} value={country.code}>
-                            {country.code} {country.name}
-                          </option>
-                        ))}
-                      </CFormSelect>
-                    </CInputGroupText>
-                    <CFormInput
-                      type="text"
-                      placeholder="Phone Number"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      required
-                      style={{ flexGrow: 1 }}
-                    />
-                  </CInputGroup> */}
                   <CFormCheck
                     required
                     className="mb-4"
                     label="I agree with Privacy Policy and Terms of use"
                   />
-                  <div className="d-grid mb-3">
+                  <div className='d-flex align-items-center justify-content-between gap-3'>
+                  <div className="w-50">
                     <CButton
                       color="success"
                       type="submit"
+                      className="px-4 w-100  "
                       disabled={isLoading}
                       style={{ boxShadow: 'none' }}
                     >
                       {isLoading ? <CSpinner size="sm" /> : 'Sign Up'}
                     </CButton>
                   </div>
+                  <div className='w-50 '>
+                        <CButton
+                          color="danger"
+                          className="px-4 w-100  "
+                          onClick={() => {
+                            setEmail('')
+                            setPassword('')
+                          }}
+                        >
+                          Cancel
+                        </CButton>
+
+                      </div>     
+                      </div>
                   <div className="mt-3 text-center">
                     <span>Already have an account? </span>
                     <a href="/login" className='text-decoration-none'>Sign in</a>

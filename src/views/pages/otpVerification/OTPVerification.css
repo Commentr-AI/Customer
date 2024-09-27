@@ -1,0 +1,22 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.OTP-window{
+    width: 400px;
+    min-width: 320px;
+    /* height: 300px; */
+    border-radius: 5px;
+    background-color: rgba(157, 167, 167, 0.625);
+    /* display: flex; */
+    /* flex-direction:row; */
+    /* align-items: center;
+    justify-content: center; */
+    padding: 15px 20px;
+    text-align: center;
+
+}

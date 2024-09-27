@@ -6,35 +6,36 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from '../app/features/auth/authSlice'
 
 const ProtectedRoute = () => {
-  const { isAuthenticated } = true //useSelector((state) => state.auth)
+  const { isAuthenticated } =  useSelector((state) => state.auth)
   // const [loading, setLoading] = useState(true)
   // console.log(isAuthenticated)
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  console.log('dashbaord')
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         credentials: 'include',
-  //       })
-  //       const data = await res.json()
-  //       console.log(data)
-  //       if (data.status === 'success') {
-  //         console.log('authenticated')
-  //         dispatch(setCredentials(data.user))
-  //       }
-  //       setLoading(false)
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        })
+        const data = await res.json()
+        console.log(data)
+        if (data.status === 'success') {
+          console.log('authenticated')
+          dispatch(setCredentials(data.user))
+        }
+        //setLoading(false)
+      } catch (e) {
+        console.log(e)
+      }
+    }
 
-  //   fetchData()
-  // }, [dispatch])
+    fetchData()
+  }, [dispatch])
   // if (loading) {
   //   return <h1>Loading</h1>
   // }
