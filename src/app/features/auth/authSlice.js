@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // const initialState = { isAuthenticated: false, userInfo: null }
 
-// Retrieve initial authentication state from localStorage
+// // Retrieve initial authentication state from localStorage
 const initialState = {
   isAuthenticated: localStorage.getItem('userInfo') ? true : false,
   userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null,
