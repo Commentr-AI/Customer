@@ -30,7 +30,7 @@ const AppHeaderDropdown = () => {
   // console.log(user);
 
   const { isAuthenticated } = useSelector((state) => state.auth)
-  console.log(isAuthenticated)
+  // console.log('isAuthenticated',isAuthenticated)
 
   const [logoutUser, { isLoading }] = useLogoutUserMutation()
 
@@ -39,13 +39,13 @@ const AppHeaderDropdown = () => {
     try {
       const res = await logoutUser()
       console.log('logout status', res)
-      if (res.data.status == 'success') {
+      // if (res.data.status == 'success') {
         dispatch(logout())
 
         navigate('/login')
 
         toast.success('Logout Sucessful!')
-      }
+      // }
 
       //console.log(userInfo)
 

@@ -10,7 +10,7 @@ const ProtectedRoute = () => {
   // const [loading, setLoading] = useState(true)
   // console.log(isAuthenticated)
   const dispatch = useDispatch()
-  console.log('dashbaord')
+  console.log('This is protectedRoute ')
 
   useEffect(() => {
     const fetchData = async () => {

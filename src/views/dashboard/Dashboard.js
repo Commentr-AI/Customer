@@ -79,7 +79,7 @@
 import React from 'react'
 
 const Dashboard = () => {
-  console.log('Dash board')
+  console.log('This is Dash board page')
   return (
     <div className="dashboard-container">
       <h3>This is dashboard page</h3>
