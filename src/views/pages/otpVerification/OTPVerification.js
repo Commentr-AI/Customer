@@ -18,7 +18,7 @@ const OTPVerification = () => {
     const [otp,setOtp] =useState('')
     //const [email,setEmail]=useState('')
     const { email } = useParams();
-    console.log(email)
+    // console.log(email)
 
     const location = useLocation();
     
@@ -47,14 +47,17 @@ const OTPVerification = () => {
     }
 
     const handleResend = async()=>{
-      toast.success("OTP Resend Successful")
+      
       console.log(email)
       try {
         const res = await resendotp({email}).unwrap();
+        toast.success("OTP Resend Successful")
         // toast.success(res.message);
         console.log(res)
     } catch (error) {
         toast.error(error)
+        console.error("Error sending OTP:", error); // Log the error for debugging
+        toast.error(error?.data?.message || "An error occurred");
     }
     }
 
