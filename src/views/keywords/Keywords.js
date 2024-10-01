@@ -31,7 +31,7 @@ const Keywords = () => {
   const handleEdit = (index) => {
     setKeyword(keywordsList[index]); // Pre-fill the input with the keyword to be edited
     setIsEditing(true); // Set editing mode
-    setEditIndex(index); // Track the index being edited
+    setEditIndex(index); 
   };
 
   // Handle deleting a keyword
