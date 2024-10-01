@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './app/features/auth/authSlice'
 
+
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
 import ForgotPassword from './views/pages/forgot/ForgotPassword'
+// import UpdatePassword from './views/pages/forgot/UpdatePassword'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -15,11 +17,13 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const OTPVerification = React.lazy(()=> import("./views/pages/otpVerification/OTPVerification"))
+const ResetPassword =React.lazy(()=>import('./views/pages/forgot/ResetPassword'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
+
 
 const App = () => {
   const { userInfo } = useSelector((state) => state.auth)
@@ -47,13 +51,17 @@ const App = () => {
             // element={<Login />}
           />
           <Route exact path="/register" name="Register Page" element={<Register />} />
-          <Route exact path="/otpverification" name="OTP Verification" element={<OTPVerification />} />
+          <Route exact path="/otpverification/:email" name="OTP Verification" element={<OTPVerification />} />
+          
           <Route
             exact
             path="/forgot-password"
             name="Forgot Password Page"
             element={<ForgotPassword />}
           />
+          <Route exact path="/reset-password/:tocken" name="Update Password Page" element={<ResetPassword />} />
+          
+
           <Route exact path="/404" name="Page 404" element={<Page404 />} />
           <Route exact path="/500" name="Page 500" element={<Page500 />} />
           {/* <Route

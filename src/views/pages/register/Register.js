@@ -190,27 +190,6 @@ import { useRegisterMutation } from '../../../app/service/usersApiSlice';
 import { setCredentials } from '../../../app/features/auth/authSlice';
 import RedditIcon from '../login/Reddit-Icon';
 
-// List of country codes
-// const countryCodes = [
-//   { code: '+1', name: 'USA' },
-//   { code: '+91', name: 'India' },
-//   { code: '+44', name: 'UK' },
-//   { code: '+61', name: 'Australia' },
-//   { code: '+81', name: 'Japan' },
-//   { code: '+49', name: 'Germany' },
-//   { code: '+86', name: 'China' },
-//   { code: '+33', name: 'France' },
-//   { code: '+39', name: 'Italy' },
-//   { code: '+34', name: 'Spain' },
-//   { code: '+7', name: 'Russia' },
-//   { code: '+55', name: 'Brazil' },
-//   { code: '+27', name: 'South Africa' },
-//   { code: '+82', name: 'South Korea' },
-//   { code: '+52', name: 'Mexico' },
-//   { code: '+64', name: 'New Zealand' },
-//   // Add more countries as needed
-// ];
-
 const Register = () => {
   const [name, setName] = useState('Srinu');
   const [email, setEmail] = useState('vemulasrinu104@gmail.com');
@@ -244,7 +223,7 @@ const Register = () => {
       //dispatch(setCredentials({ ...res }));
       console.log(res)
       toast.success(res);
-      navigate('/otpverification',{state:email});
+      navigate(`/otpverification/${email}`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }

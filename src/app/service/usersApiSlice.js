@@ -25,6 +25,16 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    resendotp: builder.mutation({ 
+      query: (data) => ({
+       
+        url: '/api/v1/users/resendOtp',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
     forgot: builder.mutation({
       query: (data) => ({
         url: '/api/v1/users/forgot',
@@ -59,6 +69,7 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useOtpverificationMutation,
+  useResendotpMutation,
   useForgotMutation,
   useLogoutUserMutation,
   useUpdateUserMutation,

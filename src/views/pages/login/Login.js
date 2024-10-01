@@ -38,21 +38,26 @@ const Login = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      
+
       const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include',
-      })
-      const data = await res.json()
-      console.log(data)
-      if (data.status === 'success') {
-        navigate('/dashboard')
-      }
-    }
+        credentials: 'include', // This is correct for sending cookies
+      });
+    
+      const data = await res.json();
+      console.log(data);
 
-    fetchData()
+      if (data.status === 'success') {
+        navigate('/dashboard');
+      }
+    };
+    
+    fetchData();
+    
   }, [navigate])
 
   const redditHandler = ()=>{
@@ -63,7 +68,7 @@ const Login = () => {
     e.preventDefault()
     try {
       const res = await login({ email, password}).unwrap()
-      // console.log(res.user)
+      console.log(res.user)
       dispatch(setCredentials({ ...res.user }))
       toast.success('Login Successful! Welcome back!.')
       navigate('/dashboard')
