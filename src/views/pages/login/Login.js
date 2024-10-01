@@ -56,7 +56,7 @@ const Login = () => {
   }, [navigate])
 
   const redditHandler = ()=>{
-    window.location.href= `${import.meta.env.VITE_BASE_URL}/api/v1/auth/reddit`
+    window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
   }
 
   const submitHandler = async (e) => {
