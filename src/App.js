@@ -59,7 +59,7 @@ const App = () => {
             name="Forgot Password Page"
             element={<ForgotPassword />}
           />
-          <Route exact path="/reset-password/:tocken"
+          <Route exact path="/reset-password/:token"
           // /reset-password/:tocken
           name="Update Password Page" element={<ResetPassword />} />
           
