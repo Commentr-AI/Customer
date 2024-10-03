@@ -47,15 +47,15 @@ const OTPVerification = () => {
     }
 
     const handleResend = async()=>{
-      
+      setOtp('')
       console.log(email)
       try {
         const res = await resendotp({email}).unwrap();
-        toast.success("OTP Resend Successful")
+        toast.success(res.message)
         // toast.success(res.message);
         console.log(res)
     } catch (error) {
-        toast.error(error)
+        // toast.error(error)
         console.error("Error sending OTP:", error); // Log the error for debugging
         toast.error(error?.data?.message || "An error occurred");
     }

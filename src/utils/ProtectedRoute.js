@@ -10,7 +10,7 @@ const ProtectedRoute = () => {
   // const [loading, setLoading] = useState(true)
   // console.log(isAuthenticated)
   const dispatch = useDispatch()
-  console.log('This is protectedRoute ')
+  // console.log('This is protectedRoute ')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,9 +23,9 @@ const ProtectedRoute = () => {
           credentials: 'include',
         })
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         if (data.status === 'success') {
-          console.log('authenticated')
+          // console.log('authenticated')
           dispatch(setCredentials(data.user))
         }
         //setLoading(false)

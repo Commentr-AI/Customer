@@ -71,7 +71,7 @@ const AppHeaderDropdown = () => {
           color="success"
           textColor="white"
         >
-          {user ? user.username :"User"}
+          User
         </CAvatar>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">

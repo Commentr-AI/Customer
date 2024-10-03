@@ -221,7 +221,7 @@ const Register = () => {
       const res = await register({ username: name, email, password, role: 'user',}).unwrap();
       console.log(res)
       //dispatch(setCredentials({ ...res }));
-      console.log(res)
+      //console.log(res)
       toast.success(res);
       navigate(`/otpverification/${email}`);
     } catch (err) {

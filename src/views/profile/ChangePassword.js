@@ -183,11 +183,13 @@ const ChangePassword = () => {
     }
 
     try {
+      console.log("change ")
       const res = await updatePassword({
         currentPassword,
-        newPassword,
-        confirmNewPassword,
+        Password:newPassword,
+        // confirmNewPassword,
       }).unwrap()
+      console.log(res)
       dispatch(setCredentials({ ...res }))
       setCurrentPassword('')
       setNewPassword('')

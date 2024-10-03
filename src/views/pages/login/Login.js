@@ -32,7 +32,7 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { isAuthenticated } =  useSelector((state) => state.auth)
-  console.log(isAuthenticated)
+  // console.log(isAuthenticated)
 
   const [login, { isLoading }] = useLoginMutation()
 
@@ -49,7 +49,7 @@ const Login = () => {
       });
     
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
 
       if (data.status === 'success') {
         navigate('/dashboard');
