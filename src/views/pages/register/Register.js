@@ -213,6 +213,10 @@ const Register = () => {
     }
   }, [userInfo, navigate]);
 
+  const redditHandler = ()=>{
+    window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
+  }
+
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== repeatPassword) {
@@ -326,7 +330,7 @@ const Register = () => {
                 
                   <h1>Register</h1>
                   <div>
-                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' ><RedditIcon/><span className='ms-3'> SignUp with Reddit </span></button>
+                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' onClick ={redditHandler} ><RedditIcon/><span className='ms-3'> SignUp with Reddit </span></button>
                     </div>
                     <hr className='my-4'/>
                   <p className="text-body-secondary">Create your admin account</p>

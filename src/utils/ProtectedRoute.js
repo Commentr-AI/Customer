@@ -7,7 +7,7 @@ import { setCredentials } from '../app/features/auth/authSlice'
 
 const ProtectedRoute = () => {
   const { isAuthenticated } =  useSelector((state) => state.auth)
-  // const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   // console.log(isAuthenticated)
   const dispatch = useDispatch()
   // console.log('This is protectedRoute ')
@@ -28,7 +28,7 @@ const ProtectedRoute = () => {
           // console.log('authenticated')
           dispatch(setCredentials(data.user))
         }
-        //setLoading(false)
+        setLoading(false)
       } catch (e) {
         console.log(e)
       }
@@ -36,9 +36,24 @@ const ProtectedRoute = () => {
 
     fetchData()
   }, [dispatch])
-  // if (loading) {
-  //   return <h1>Loading</h1>
-  // }
+  if (loading) {
+    
+    return(
+      <div
+      className="d-flex justify-content-center align-items-start "
+      style={{
+        height: '100vh',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: semi-transparent background
+        position: 'relative',
+      }}
+    >
+      <div className="spinner-border fs-1 spinner-border-lg text-primary " style={{width:"5rem", height:"5rem", marginTop:"15%"}} role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    );
+
+  }
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} replace />
 }

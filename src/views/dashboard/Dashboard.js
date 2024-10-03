@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      {!user.reddit_username &&      
+      {!user?.reddit_username &&      
       <div className="alert alert-info d-flex justify-content-between align-items-center" role="alert">
       
       <div>
