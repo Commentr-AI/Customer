@@ -51,6 +51,7 @@ const App = () => {
             // element={<Login />}
           />
           <Route exact path="/register" name="Register Page" element={<Register />} />
+          <Route exact path="/register/:id" name="Register Page" element={<Register />} />
           <Route exact path="/otpverification/:email" name="OTP Verification" element={<OTPVerification />} />
           
           <Route
