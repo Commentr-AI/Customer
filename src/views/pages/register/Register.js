@@ -185,7 +185,7 @@ import {
 import CIcon from '@coreui/icons-react';
 import { cilUser, cilLockLocked, cilPhone } from '@coreui/icons';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../../../app/service/usersApiSlice';
 import { setCredentials } from '../../../app/features/auth/authSlice';
@@ -201,6 +201,7 @@ const Register = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const [register, { isLoading }] = useRegisterMutation();
 
@@ -232,7 +233,8 @@ const Register = () => {
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
-        <CRow className="justify-content-start gap-1">
+        <CRow className="justify-content-center gap-1">
+          {id &&
                   <CCol mb={5} lg={4} xl={4} className=''>
             <CCard className='bg-white h-100'>
               <CCardHeader>
@@ -317,6 +319,7 @@ const Register = () => {
               
             </CCard>
           </CCol>
+          }
           <CCol md={9} lg={7} xl={6}>
             <CCard className="mx-4">
               <CCardBody className="p-4">

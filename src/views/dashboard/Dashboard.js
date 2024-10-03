@@ -80,9 +80,13 @@ import React from 'react'
 
 const Dashboard = () => {
   console.log('This is Dash board page')
+ const handleReddit = ()=>{
+  window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
+ }
+
   return (
     <div className="dashboard-container">
-      <h3>This is dashboard page</h3>
+      <button className='btn btn-primary' onClick={handleReddit}>Login With Reddit</button>
     </div>
   )
 }
