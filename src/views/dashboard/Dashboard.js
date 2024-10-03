@@ -1,92 +1,49 @@
-// import React from 'react';
-// import { Container, Row, Col } from 'react-bootstrap';
-// import './Dashboard.css'; // Import custom CSS file for styling
-
-// const Dashboard = () => {
-//   return (
-//     <div className="dashboard-container">
-//       <Container>
-//         {/* Users and Requests Section */}
-//         <div className="section">
-//           <h2>Users and Requests</h2>
-//           <Row>
-//             <Col md={6}>
-//               <div className="card">
-//                 <h3>Total Users</h3>
-//                 <p>21</p>
-//               </div>
-//             </Col>
-//             <Col md={6}>
-//               <div className="card">
-//                 <h3>Contact Requests</h3>
-//                 <p>26</p>
-//               </div>
-//             </Col>
-//           </Row>
-//         </div>
-
-//         {/* Products and Categories Section */}
-//         <div className="section">
-//           <h2>Products and Categories</h2>
-//           <Row>
-//             <Col md={6}>
-//               <div className="card">
-//                 <h3>Total Categories</h3>
-//                 <p>2</p>
-//               </div>
-//             </Col>
-//             <Col md={6}>
-//               <div className="card">
-//                 <h3>Total Products</h3>
-//                 <p>9</p>
-//               </div>
-//             </Col>
-//           </Row>
-//         </div>
-
-//         {/* Orders Section */}
-//         <div className="section">
-//           <h2>Orders</h2>
-//           {/* <Row>
-//             {[1, 2, 3, 4, 5].map((index) => (
-//               <Col md={4} key={index}>
-//                 <div className="card">
-//                   <h3>Total Orders</h3>
-//                   <p>5</p>
-//                 </div>
-//               </Col>
-//             ))}
-//           </Row> */}
-//           <Row className="section orders">
-//   {[1, 2, 3, 4, 5].map((index) => (
-//     <Col md={4} key={index}>
-//       <div className="card">
-//         <h3>Total Orders</h3>
-//         <p>5</p>
-//       </div>
-//     </Col>
-//   ))}
-// </Row>
-
-//         </div>
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
-import React from 'react'
+import React, {useState,useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 
 const Dashboard = () => {
   console.log('This is Dash board page')
+  
+  const [isVisible, setIsVisible] = useState(true);
+  const user =useSelector((state)=>state.auth.userInfo)
+  console.log(user);
+
+  const handleClose = () => {
+    setIsVisible(false);
+  };
+
+  const handleSubmit = () => {
+    // Your submit logic here
+    console.log("Submitted!");
+    window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
+    handleClose(); // Optionally close the message after submission
+  };
+
+  if (!isVisible) {
+    return null; // Don't render if the message is not visible
+  }
+
  const handleReddit = ()=>{
   window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
  }
 
   return (
     <div className="dashboard-container">
-      <button className='btn btn-primary' onClick={handleReddit}>Login With Reddit</button>
+      {!user.reddit_username &&      
+      <div className="alert alert-info d-flex justify-content-between align-items-center" role="alert">
+      
+      <div>
+      <span>Kindly add your Reddit account here!</span>
+        <button onClick={handleSubmit} className="btn ms-3 " style={{backgroundColor:"#FF4500", color:"white"}}>
+          ADD Reddit
+        </button>
+        
+      </div>
+      <button onClick={handleClose} className="btn btn-close">
+        {/* <i className="bi bi-x-square"></i> */}
+        </button>
+    </div>
+    }
     </div>
   )
 }
