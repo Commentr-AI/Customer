@@ -186,7 +186,7 @@ const ChangePassword = () => {
       console.log("change ")
       const res = await updatePassword({
         currentPassword,
-        Password:newPassword,
+        password:newPassword,
         // confirmNewPassword,
       }).unwrap()
       console.log(res)
