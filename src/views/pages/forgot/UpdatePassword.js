@@ -11,24 +11,35 @@ import {
   CRow,
 } from '@coreui/react'
 import { Link } from 'react-router-dom'
-import { useForgotMutation } from '../../../app/service/usersApiSlice'
+import { useResetMutation } from '../../../app/service/usersApiSlice'
+import { useParams } from 'react-router-dom';
 
 const UpdatePassword = () => {
   const [password, setPassword] = useState('')
-  const [conformPassword, setConformPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const [forgotPassword, { isLoading, isSuccess, isError, error }] = useForgotMutation()
+  const [resetPassword, { isLoading, isSuccess, isError, error }] = useResetMutation()
+
+
+  const { token } = useParams();
+  console.log("token", token)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log("button clicked")
-    // console.log('Submitting email:', email) // Log the email being submitted
-    // try {
-    //   const response = await forgotPassword({ email }).unwrap()
-    //   console.log('API response:', response) // Log the API response
-    // } catch (err) {
-    //   console.error('Failed to send password reset email: ', err)
-    // }
+
+    if (password !== confirmPassword) {
+      console.error('Passwords do not match!');
+      return;
+    }
+
+
+    try {
+      const response = await resetPassword({data: { password },token}).unwrap()
+      console.log('API response:', response) // Log the API response
+    } catch (err) {
+      console.error('Failed to send password reset email: ', err)
+    }
   }
 
   return (
@@ -54,13 +65,13 @@ const UpdatePassword = () => {
                     </CRow>
                     <CRow>
                     <CCol>
-                      <CFormLabel htmlFor="conformpassword">Conform Password</CFormLabel>
+                      <CFormLabel htmlFor="confirmpassword">Confirm Password</CFormLabel>
                       <CFormInput
-                        type="conformpassword"
-                        id="conformpassword"
+                        type="confirmpassword"
+                        id="confirmpassword"
                         placeholder=""
-                        value={conformPassword}
-                        onChange={(e) => setConformPassword(e.target.value)}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                       />
                     </CCol>
