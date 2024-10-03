@@ -17,7 +17,7 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const OTPVerification = React.lazy(()=> import("./views/pages/otpVerification/OTPVerification"))
-const ResetPassword =React.lazy(()=>import('./views/pages/reset/ResetPassword'))
+const ResetPassword =React.lazy(()=>import('./views/pages/forgot/UpdatePassword'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
@@ -59,7 +59,7 @@ const App = () => {
             name="Forgot Password Page"
             element={<ForgotPassword />}
           />
-          <Route exact path="/reset-password"
+          <Route exact path="/reset-password/:tocken"
           // /reset-password/:tocken
           name="Update Password Page" element={<ResetPassword />} />
           
