@@ -6,7 +6,7 @@ const Dashboard = () => {
   
   const [isVisible, setIsVisible] = useState(true);
   const user =useSelector((state)=>state.auth.userInfo)
-  console.log(user);
+  // console.log(user);
 
   const handleClose = () => {
     setIsVisible(false);

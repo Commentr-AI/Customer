@@ -1,170 +1,3 @@
-
-
-// import React, { useState, useEffect } from 'react';
-// import {
-//   CButton,
-//   CCard,
-//   CCardBody,
-//   CCol,
-//   CContainer,
-//   CForm,
-//   CFormInput,
-//   CInputGroup,
-//   CInputGroupText,
-//   CFormCheck,
-//   CRow,
-//   CSpinner,
-// } from '@coreui/react';
-// import CIcon from '@coreui/icons-react';
-// import { cilUser, cilLockLocked, cilPhone } from '@coreui/icons';
-// import { toast } from 'react-toastify';
-// import { useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useRegisterMutation } from '../../../app/service/usersApiSlice';
-// import { setCredentials } from '../../../app/features/auth/authSlice';
-
-// const Register = () => {
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [repeatPassword, setRepeatPassword] = useState('');
-//   const [phoneNumber, setPhoneNumber] = useState('');
-
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();
-
-//   const [register, { isLoading }] = useRegisterMutation();
-
-//   const { userInfo } = useSelector((state) => state.auth);
-
-//   useEffect(() => {
-//     if (userInfo) {
-//       navigate('/dashboard');
-//     }
-//   }, [userInfo, navigate]);
-
-//   const submitHandler = async (e) => {
-//     e.preventDefault();
-//     if (password !== repeatPassword) {
-//       return toast.error('Password and Confirm password are not the same.');
-//     }
-
-//     try {
-//       const res = await register({ name, email, password, role: 'admin', phoneNumber }).unwrap();
-//       dispatch(setCredentials({ ...res }));
-//       toast.success('Sign Up Successful! Welcome to the dashboard. 🚀');
-//       navigate('/dashboard');
-//     } catch (err) {
-//       toast.error(err?.data?.message || err.error);
-//     }
-//   };
-
-//   return (
-//     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
-//       <CContainer>
-//         <CRow className="justify-content-center">
-//           <CCol md={9} lg={7} xl={6}>
-//             <CCard className="mx-4">
-//               <CCardBody className="p-4">
-//                 <CForm onSubmit={submitHandler}>
-//                   <h1>Register</h1>
-//                   <p className="text-body-secondary">Create your admin account</p>
-//                   <CInputGroup className="mb-3">
-//                     <CInputGroupText>
-//                       <CIcon icon={cilUser} />
-//                     </CInputGroupText>
-//                     <CFormInput
-//                       placeholder="Name"
-//                       type="text"
-//                       value={name}
-//                       onChange={(e) => setName(e.target.value)}
-//                       required
-//                     />
-//                   </CInputGroup>
-//                   <CInputGroup className="mb-3">
-//                     <CInputGroupText>@</CInputGroupText>
-//                     <CFormInput
-//                       type="email"
-//                       placeholder="Email"
-//                       value={email}
-//                       onChange={(e) => setEmail(e.target.value)}
-//                       required
-//                     />
-//                   </CInputGroup>
-//                   <CInputGroup className="mb-3">
-//                     <CInputGroupText>
-//                       <CIcon icon={cilLockLocked} />
-//                     </CInputGroupText>
-//                     <CFormInput
-//                       type="password"
-//                       placeholder="Password"
-//                       minLength={8}
-//                       value={password}
-//                       onChange={(e) => setPassword(e.target.value)}
-//                       required
-//                     />
-//                   </CInputGroup>
-//                   <CInputGroup className="mb-3">
-//                     <CInputGroupText>
-//                       <CIcon icon={cilLockLocked} />
-//                     </CInputGroupText>
-//                     <CFormInput
-//                       type="password"
-//                       placeholder="Confirm Password"
-//                       minLength={8}
-//                       value={repeatPassword}
-//                       onChange={(e) => setRepeatPassword(e.target.value)}
-//                       required
-//                     />
-//                   </CInputGroup>
-//                   <CInputGroup className="mb-3">
-//                     <CInputGroupText>
-//                       <CIcon icon={cilPhone} />
-//                     </CInputGroupText>
-//                     <CFormInput
-//                       type="text"
-//                       placeholder="Phone Number (e.g., +123-4567890)"
-//                       value={phoneNumber}
-//                       onChange={(e) => setPhoneNumber(e.target.value)}
-//                       required
-//                     />
-//                   </CInputGroup>
-//                   <CFormCheck
-//                     required
-//                     className="mb-4"
-//                     label="I agree with Privacy Policy and Terms of use"
-//                   />
-//                   <div className="d-grid mb-3">
-//                     <CButton color="success" type="submit" disabled={isLoading}>
-//                       {isLoading ? <CSpinner size="sm" /> : 'Sign Up'}
-//                     </CButton>
-//                   </div>
-//                   <div className="mt-3 text-center">
-//                     <span>Already have an account? </span>
-//                     <a href="/login">Sign in</a>
-//                   </div>
-//                 </CForm>
-//               </CCardBody>
-//             </CCard>
-//           </CCol>
-//         </CRow>
-//       </CContainer>
-//     </div>
-//   );
-// };
-
-// export default Register;
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import {
   CButton,
@@ -185,33 +18,72 @@ import {
 import CIcon from '@coreui/icons-react';
 import { cilUser, cilLockLocked, cilPhone } from '@coreui/icons';
 import { toast } from 'react-toastify';
-import { useNavigate ,useParams } from 'react-router-dom';
+import { useNavigate ,useParams,useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../../../app/service/usersApiSlice';
 import { setCredentials } from '../../../app/features/auth/authSlice';
 import RedditIcon from '../login/Reddit-Icon';
+import axios from "axios"
 
 const Register = () => {
   const [name, setName] = useState('Srinu');
   const [email, setEmail] = useState('vemulasrinu104@gmail.com');
   const [password, setPassword] = useState('Srinu53@');
   const [repeatPassword, setRepeatPassword] = useState('Srinu53@');
-  // const [phoneNumber, setPhoneNumber] = useState('');
-  // const [countryCode, setCountryCode] = useState('+1'); // Default country code
+  const [priceData, setPriceData] = useState('');
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const location = useLocation();
+
+   // Function to parse query parameters
+   const queryParams = new URLSearchParams(location.search);
+   const id = queryParams.get('id');
+   const billingType= queryParams.get('billingType') // Replace 'param' with your query parameter name
+ 
+  console.log(id)
+  console.log(billingType)
 
   const [register, { isLoading }] = useRegisterMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    
+    const fetchPricing = async()=>{
+      try{
+        const res = await axios.get(
+                  `https://api-c8tq.onrender.com/api/v1/pricings/${id}`
+                );
+                //  console.log(res)
+
+                setPriceData(res.data.pricing);
+
+                console.log(priceData);
+      }
+      catch(e){
+        console.log(e)
+      }
+      
+    }
+
+    fetchPricing()
+
+  }, [id]);
+
+  useEffect(()=>{
+    console.log(priceData)
+  },[priceData])
+  
+
+  useEffect(() => {
     if (userInfo) {
       navigate('/dashboard');
     }
   }, [userInfo, navigate]);
+
+  
 
   const redditHandler = ()=>{
     window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
@@ -224,7 +96,7 @@ const Register = () => {
     }
 
     try {
-      const res = await register({ username: name, email, password, role: 'user',}).unwrap();
+      const res = await register({ username: name, email, password, role: 'user', plan: priceData._id, billingType}).unwrap();
       console.log(res)
       
       toast.success(res);
@@ -238,38 +110,34 @@ const Register = () => {
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center gap-1">
-          {id &&
+          {priceData &&
                   <CCol mb={5} lg={4} xl={4} className=''>
             <CCard className='bg-white h-100'>
               <CCardHeader>
-                Choose Pricing
+                Your Choose Pricing
               </CCardHeader>
               <CCardBody>
              
               <div className="">
   <div className="">
     <h4 className="mb-3 display-6 font-weight-bold text-dark">
-      packageName
+      {priceData.title}
     </h4>
     <div className="d-flex justify-content-between align-items-center">
       <h3 className="price mb-2 display-4 font-weight-bold text-dark">
-        $10
-        <span className="time fs-4 font-weight-normal text-muted">/duration</span>
+        ${billingType==="billed monthly" ? priceData.monthlyPrice :priceData.annualPrice
+}
+        <span className="time fs-4 font-weight-normal text-muted">/month</span>
       </h3>
     </div>
-    <p className="mb-7 text-base text-muted">subtitle</p>
+    <p className="mb-7 text-base text-muted">{billingType}</p>
     <div className="mb-4 border-bottom border-muted border-opacity-10 pb-4">
-      <a 
-        href={`https://customer-zeta-eight.vercel.app`} 
-        className="btn btn-primary btn-block rounded-xl p-3 text-base font-weight-bold text-white transition duration-300 ease-in-out hover:bg-opacity-80"
-      >
-        Try on desktop
-      </a>
     </div>
     <div>
-    <div>children</div>
-    <div>children</div>
-    <div>children</div>
+    <div>{priceData.replies} Replies</div>
+    <div>{priceData.communities} Community</div>
+    <div>{priceData.users} User account</div>
+    <div>{priceData.keywords} Keywords</div>
     </div>
     <div className="position-absolute bottom-0 end-0 z-n1">
       <svg

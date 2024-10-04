@@ -29,7 +29,7 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   const [userData, setUserData] = useState({
-    name: user?.name || '',
+    name: user?.username || '',
     email: user?.email || '',
   })
 
@@ -84,17 +84,21 @@ const Profile = () => {
                       onChange={handleChange}
                     />
                   </CInputGroup>
-
-                  <div className="d-grid mb-3">
+                  <div className='d-flex align-items-center justify-content-between gap-3'>
+                  <div className="d-grid w-50">
                     <CButton type="submit" color="success" disabled={isLoading}>
                       {isLoading ? <CSpinner size="sm" /> : 'Update'}
                     </CButton>
                   </div>
-                  <Link to={'/dashboard'}>
+                  <Link to={'/dashboard'} className='text-decoration-none w-50'>
                     <div className="d-grid">
-                      <CButton color="secondary">Cancel</CButton>
+                      <CButton color="danger">Cancel</CButton>
                     </div>
                   </Link>
+
+                  </div>
+
+                  
                 </CForm>
               </CCardBody>
             </CCard>
