@@ -23,7 +23,7 @@ const ProtectedRoute = () => {
           credentials: 'include',
         })
         const data = await res.json()
-        // console.log(data)
+        console.log(data)
         if (data.status === 'success') {
           // console.log('authenticated')
           dispatch(setCredentials(data.user))
