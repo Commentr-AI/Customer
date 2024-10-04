@@ -11,7 +11,8 @@ import {
   CRow,
 } from '@coreui/react'
 import { Link } from 'react-router-dom'
-import { useForgotMutation } from '../../../app/service/usersApiSlice'
+import { useForgotMutation } from '../../../app/service/usersApiSlice';
+import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
@@ -23,6 +24,9 @@ const ForgotPassword = () => {
     try {
       const response = await forgotPassword({ email }).unwrap()
       console.log('API response:', response) // Log the API response
+      if(response.status=='success'){
+        toast.success("Email sent successfully!")
+      }
     } catch (err) {
       console.error('Failed to send password reset email: ', err)
     }
@@ -40,7 +44,7 @@ const ForgotPassword = () => {
                   <p className="text-body-secondary">
                     Enter your email, we will send you the password
                   </p>
-                  {isSuccess && <p className="text-success">Email sent successfully!</p>}
+                  {/* {isSuccess && <p className="text-success">Email sent successfully!</p>} */}
                   {isError && <p className="text-danger">{error.data.message}</p>}
                   <CRow className="mb-3">
                     <CCol>

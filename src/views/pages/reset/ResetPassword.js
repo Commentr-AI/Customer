@@ -10,24 +10,23 @@ import {
   CFormInput,
   CRow,
 } from '@coreui/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useResetMutation } from '../../../app/service/usersApiSlice'
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const UpdatePassword = () => {
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [password, setPassword] = useState('12345678')
+  const [confirmPassword, setConfirmPassword] = useState('12345678')
+  const navigate =useNavigate();
 
   const [resetPassword, { isLoading, isSuccess, isError, error }] = useResetMutation()
-
 
   const { token } = useParams();
   console.log("token", token)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log("button clicked")
-
     if (password !== confirmPassword) {
       console.error('Passwords do not match!');
       return;
@@ -36,8 +35,12 @@ const UpdatePassword = () => {
 
     try {
       console.log(token, password)
-      const response = await resetPassword({data: { password }, token}).unwrap()
+      const response = await resetPassword({password, token}).unwrap()
       console.log('API response:', response) // Log the API response
+      if(response.mesee="success"){
+        toast.success("password reset successful")
+        navigate('/login');
+      }
     } catch (err) {
       console.error('Failed to send password reset email: ', err)
     }
