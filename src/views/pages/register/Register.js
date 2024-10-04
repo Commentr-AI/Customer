@@ -51,7 +51,7 @@ const Register = () => {
 
   useEffect(() => {
     if(id){   
-       
+
       const fetchPricing = async()=>{
       try{
         const res = await axios.get(
@@ -114,7 +114,7 @@ const Register = () => {
       <CContainer>
         <CRow className="justify-content-center gap-1">
           {priceData &&
-                  <CCol mb={5} lg={4} xl={4} className=''>
+                  <CCol  lg={4} xl={4} className='bg-info'>
             <CCard className='bg-white h-100'>
               <CCardHeader>
                 Your Choose Pricing

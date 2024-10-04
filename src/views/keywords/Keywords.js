@@ -96,10 +96,10 @@ const handleUpdate = async(e) =>{
             style={{ padding: '10px', width: '300px' }}
             className='form-control'
           />
-          {/* <button type='submit' className={`btn ${isEditing ? "btn-success px-4 py-2" :"btn-primary px-5 py-2" } m-3`} disabled={isEditing ? false : keywordsList.length == maxKeywords}>
+          <button type='submit' className={`btn ${isEditing ? "btn-success px-4 py-2" :"btn-primary px-5 py-2" } m-3`} disabled={isEditing ? false : keywordsList.length == maxKeywords}>
             {isEditing ? 'Update' : 'Add'}
-          </button> */}
-          {!(keywordsList.length === maxKeywords && !isEditing) && (
+          </button>
+          {/* {!(keywordsList.length === maxKeywords && !isEditing) && (
   <button 
     type='submit' 
     className={`btn ${isEditing ? "btn-success px-4 py-2" : "btn-primary px-5 py-2"} m-3`} 
@@ -107,7 +107,7 @@ const handleUpdate = async(e) =>{
   >
     {isEditing ? 'Update' : 'Add'}
   </button>
-)}
+)} */}
         </div>
       </form>
       
