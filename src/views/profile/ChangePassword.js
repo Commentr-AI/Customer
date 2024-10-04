@@ -190,7 +190,7 @@ const ChangePassword = () => {
         // confirmNewPassword,
       }).unwrap()
       console.log(res)
-      dispatch(setCredentials({ ...res }))
+      //dispatch(setCredentials({ ...res }))
       setCurrentPassword('')
       setNewPassword('')
       setConfirmNewPassword('')

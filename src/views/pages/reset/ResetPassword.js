@@ -37,7 +37,7 @@ const UpdatePassword = () => {
       console.log(token, password)
       const response = await resetPassword({password, token}).unwrap()
       console.log('API response:', response) // Log the API response
-      if(response.mesee="success"){
+      if(response.status=="success"){
         toast.success("password reset successful")
         navigate('/login');
       }

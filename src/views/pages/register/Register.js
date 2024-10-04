@@ -50,8 +50,9 @@ const Register = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    
-    const fetchPricing = async()=>{
+    if(id){   
+       
+      const fetchPricing = async()=>{
       try{
         const res = await axios.get(
                   `https://api-c8tq.onrender.com/api/v1/pricings/${id}`
@@ -69,6 +70,8 @@ const Register = () => {
     }
 
     fetchPricing()
+  }
+
 
   }, [id]);
 
@@ -102,7 +105,7 @@ const Register = () => {
       toast.success(res);
       navigate(`/otpverification/${email}`);
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
+      toast.error(err?.data?.message || "err.error");
     }
   };
 
