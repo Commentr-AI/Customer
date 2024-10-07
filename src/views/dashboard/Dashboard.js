@@ -40,9 +40,24 @@ const Dashboard = () => {
         
       </div>
       <button onClick={handleClose} className="btn btn-close">
-        {/* <i className="bi bi-x-square"></i> */}
         </button>
-    </div>
+      </div>
+    }
+    {!user?.reddit_username &&      
+      <div className="alert alert-info d-flex justify-content-between align-items-center" role="alert">
+      
+      <div>
+      <span>Payment Successful !</span>
+        <button onClick={handleSubmit} className="btn ms-3 btn-success " 
+        // style={{backgroundColor:"#FF4500", color:"white"}}
+        >
+          View
+        </button>
+        
+      </div>
+      <button onClick={handleClose} className="btn btn-close">
+        </button>
+      </div>
     }
     </div>
   )

@@ -89,9 +89,9 @@ const Login = () => {
                 <CCardBody>
                   
                     <h1 className="login-header">Login</h1>
-                    <div>
+                    {/* <div>
                       <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' onClick ={redditHandler} ><RedditIcon/><span className='ms-3'> Login with Reddit </span></button>
-                    </div>
+                    </div> */}
                     <hr className='my-4'/>
                     <p className="text-body-secondary">Sign In to your account</p>
                     <CForm onSubmit={submitHandler}>

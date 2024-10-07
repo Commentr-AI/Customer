@@ -16,7 +16,7 @@ const Blog = React.lazy(() => import('./views/Blogs/Blog.js'))
 const AddBlog = React.lazy(() => import('./views/Blogs/AddBlog.js'))
 const ViewBlog = React.lazy(() => import('./views/Blogs/ViewBlog.js'))
 const UpdateBlog = React.lazy(() => import('./views/Blogs/UpdateBlog.js'))
-
+const OrderSuccess = React.lazy(()=>import('./views/orderSuccess/OrderSuccess.js'))
 const routes = [
   { path: '/', exact: true, name: 'Home', element: Dashboard },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -27,6 +27,7 @@ const routes = [
   { path: '/plan', name: 'Plan', element: Plan },
   { path: '/bilings', name: 'Bilings', element: Bilings},
   { path: '/keywords', name: 'Keywords', element: Keywords},
+  {path :'/success',name:"Payment Successful", element:OrderSuccess},
 
   { path: '/profile', name: 'Profile', element: Profile },
   { path: '/profile/change-password', name: 'Change Password', element: ChangePassword },

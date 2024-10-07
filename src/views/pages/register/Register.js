@@ -30,7 +30,7 @@ const Register = () => {
   const [email, setEmail] = useState('vemulasrinu104@gmail.com')
   const [password, setPassword] = useState('Srinu53@')
   const [repeatPassword, setRepeatPassword] = useState('Srinu53@')
-  const [priceData, setPriceData] = useState('')
+  const [priceData, setPriceData] = useState('');
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -112,7 +112,7 @@ const Register = () => {
           {priceData && (
             <CCol md={9} lg={4} xl={4} className="">
               <CCard className="bg-white h-100 mx-4">
-                <CCardHeader className="fs-5 fw-bold p-3">Your Choose Pricing</CCardHeader>
+                <CCardHeader className="fs-5 fw-bold p-3">Your Choosed Pricing</CCardHeader>
                 <CCardBody>
                   <div className="">
                     <div className="">
@@ -130,19 +130,19 @@ const Register = () => {
                       <div className="mb-4 border-5 rounded border-bottom border-primary  "></div>
                       <div>
                         <div className="my-3">
-                          <i class="bi bi-check-circle me-2 text-primary fw-bold"></i>
+                          <i className="bi bi-check-circle me-2 text-primary fw-bold"></i>
                           {priceData.replies} Replies
                         </div>
                         <div className="my-3">
-                          <i class="bi bi-check-circle me-2 text-primary fw-bold"></i>
+                          <i className="bi bi-check-circle me-2 text-primary fw-bold"></i>
                           {priceData.communities} Community
                         </div>
                         <div className="my-3">
-                          <i class="bi bi-check-circle me-2 text-primary fw-bold"></i>
+                          <i className="bi bi-check-circle me-2 text-primary fw-bold"></i>
                           {priceData.users} User account
                         </div>
                         <div className="my-3">
-                          <i class="bi bi-check-circle me-2 text-primary fw-bold"></i>
+                          <i className="bi bi-check-circle me-2 text-primary fw-bold"></i>
                           {priceData.keywords} Keywords
                         </div>
                       </div>
@@ -156,7 +156,7 @@ const Register = () => {
             <CCard className="mx-4">
               <CCardBody className="p-4">
                 <h1>Register</h1>
-                <div>
+                {/* <div>
                   <button
                     className="btn btn-primary w-100 d-flex align-items-center justify-content-center "
                     onClick={redditHandler}
@@ -165,7 +165,7 @@ const Register = () => {
                     <span className="ms-3"> SignUp with Reddit </span>
                   </button>
                 </div>
-                <hr className="my-4" />
+                <hr className="my-4" /> */}
                 <p className="text-body-secondary">Create your admin account</p>
                 <CForm onSubmit={submitHandler}>
                   <CInputGroup className="mb-3">
