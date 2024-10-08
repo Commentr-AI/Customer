@@ -74,7 +74,7 @@ const AppHeaderDropdown = () => {
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownItem onClick={() => navigate('/profile')} style={linkStyle}>
           <CIcon icon={cilUser} className="me-2" />
-          {user ? user.username :"Profile"}
+          {user ? user.username :"Profile "}
         </CDropdownItem>
         <CDropdownItem onClick={() => navigate('/profile/change-password')} style={linkStyle}>
           <CIcon icon={cilSettings} className="me-2" />
