@@ -1,4 +1,4 @@
-.header-container {
+/* .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,9 +10,9 @@
 
 .ctable td,
 .ctable th {
-  min-width: 100px; /* Adjust min-width as needed */
+  min-width: 100px; 
 }
 
 .action-btn {
   margin-right: 5px;
-}
+} */

@@ -59,9 +59,9 @@ const Login = () => {
     
   }, [navigate])
 
-  const redditHandler = ()=>{
-    window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
-  }
+  // const redditHandler = ()=>{
+  //   window.location.href= `${import.meta.env.VITE_BASE_URL}/auth/reddit`
+  // }
 
   const submitHandler = async (e) => {
     e.preventDefault()

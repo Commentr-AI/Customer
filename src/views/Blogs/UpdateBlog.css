@@ -1,4 +1,4 @@
-.editable-blog-container {
+/* .editable-blog-container {
   max-width: 600px;
   margin: 0;
 }
@@ -23,12 +23,12 @@
 }
 
 .editable-blog-field .ql-editor {
-  min-height: 300px; /* Adjust this height as needed */
-  line-height: 1.5; /* Ensure the line height is sufficient */
+  min-height: 300px; 
+  line-height: 1.5; 
 }
 
 .loading {
   opacity: 0.5;
 
   pointer-events: none;
-}
+} */

@@ -29,7 +29,7 @@ const Keywords = () => {
     e.preventDefault();
 
     if (keyword.trim()) {
-      const response =await axios.post("https://api-c8tq.onrender.com/api/v1/users/addkeyword",{keyword: keyword},{withCredentials: true},)
+      const response =await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/users/addkeyword`,{keyword: keyword},{withCredentials: true},)
       setKeywordsList([...keywordsList,keyword])
       
       dispatch(setCredentials({...response.data.user}))
@@ -45,7 +45,7 @@ const handleUpdate = async(e) =>{
   e.preventDefault();
   if (keyword.trim()) {
     //console.log("Update Keyword ")
-    const response = await axios.patch("https://api-c8tq.onrender.com/api/v1/users/editkeyword",{oldKeyword: userInfo.keywords[editIndex], newKeyword: keyword},{withCredentials: true})
+    const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/editkeyword`,{oldKeyword: userInfo.keywords[editIndex], newKeyword: keyword},{withCredentials: true})
     dispatch(setCredentials({...response.data.user}))
     const updatedList = [...keywordsList]
 
@@ -69,7 +69,7 @@ const handleUpdate = async(e) =>{
 
     const keywordValue = keywordsList[index]
 
-    const response = await axios.delete("https://api-c8tq.onrender.com/api/v1/users/deleteKeyword",{
+    const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/v1/users/deleteKeyword`,{
       data: {
         keyword: keywordValue
       },
@@ -96,18 +96,10 @@ const handleUpdate = async(e) =>{
             style={{ padding: '10px', width: '300px' }}
             className='form-control'
           />
-          <button type='submit' className={`btn ${isEditing ? "btn-success px-4 py-2" :"btn-primary px-5 py-2" } m-3`} disabled={isEditing ? false : keywordsList.length == maxKeywords}>
+          <button type='submit' className={`btn ${isEditing ? "btn-success px-4 py-2 text-white" :"btn-primary px-5 py-2" } m-3`} disabled={isEditing ? false : keywordsList.length == maxKeywords}>
             {isEditing ? 'Update' : 'Add'}
           </button>
-          {/* {!(keywordsList.length === maxKeywords && !isEditing) && (
-  <button 
-    type='submit' 
-    className={`btn ${isEditing ? "btn-success px-4 py-2" : "btn-primary px-5 py-2"} m-3`} 
-    disabled={isEditing ? false : keywordsList.length >= maxKeywords}
-  >
-    {isEditing ? 'Update' : 'Add'}
-  </button>
-)} */}
+
         </div>
       </form>
       
