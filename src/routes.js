@@ -9,14 +9,15 @@ const Upload =React.lazy(()=>import('./views/upload/Upload.js'));
 const PostsAndReplies =React.lazy(()=>import('./views/postsAndReplies/PostsAndReplies.js'));
 const Users =React.lazy(()=>import('./views/users/Users.js'));
 const Plan =React.lazy(()=>import('./views/plan/Plan.js'));
-const Bilings =React.lazy(()=>import('./views/bilings/Bilings.js'))
+const Bilings =React.lazy(()=>import('./views/billings/Bilings.js'))
 const Keywords = React.lazy(()=>import("./views/keywords/Keywords.js"))
-
-const Blog = React.lazy(() => import('./views/Blogs/Blog.js'))
-const AddBlog = React.lazy(() => import('./views/Blogs/AddBlog.js'))
-const ViewBlog = React.lazy(() => import('./views/Blogs/ViewBlog.js'))
-const UpdateBlog = React.lazy(() => import('./views/Blogs/UpdateBlog.js'))
 const OrderSuccess = React.lazy(()=>import('./views/orderSuccess/OrderSuccess.js'))
+// const Blog = React.lazy(() => import('./views/Blogs/Blog.js'))
+// const AddBlog = React.lazy(() => import('./views/Blogs/AddBlog.js'))
+// const ViewBlog = React.lazy(() => import('./views/Blogs/ViewBlog.js'))
+// const UpdateBlog = React.lazy(() => import('./views/Blogs/UpdateBlog.js'))
+
+
 const routes = [
   { path: '/', exact: true, name: 'Home', element: Dashboard },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -25,17 +26,17 @@ const routes = [
   { path: '/postsandreplies', name: 'Posts & Replies', element: PostsAndReplies },
   { path: '/users', name: 'Users', element: Users },
   { path: '/plan', name: 'Plan', element: Plan },
-  { path: '/bilings', name: 'Bilings', element: Bilings},
+  { path: '/billing', name: 'Billing', element: Bilings},
   { path: '/keywords', name: 'Keywords', element: Keywords},
-  {path :'/success',name:"Payment Successful", element:OrderSuccess},
+  {path :'/billing/payment',name:"Payment Details", element:OrderSuccess},
 
   { path: '/profile', name: 'Profile', element: Profile },
   { path: '/profile/change-password', name: 'Change Password', element: ChangePassword },
 
-  { path: '/blog', name: 'Blog', element: Blog },
-  { path: '/blog/addnew', name: 'Add Blog', element: AddBlog },
-  { path: '/blog/:id', name: 'View blog', element: ViewBlog },
-  { path: '/blog/update/:id', name: 'Update blog', element: UpdateBlog },
+  // { path: '/blog', name: 'Blog', element: Blog },
+  // { path: '/blog/addnew', name: 'Add Blog', element: AddBlog },
+  // { path: '/blog/:id', name: 'View blog', element: ViewBlog },
+  // { path: '/blog/update/:id', name: 'Update blog', element: UpdateBlog },
 ]
 
 export default routes

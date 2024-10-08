@@ -19,8 +19,12 @@ import navigation from '../_nav'
 const AppSidebar = () => {
   
   const dispatch = useDispatch()
-  const unfoldable = useSelector((state) => state.header.sidebarUnfoldable)
-  const sidebarShow = useSelector((state) => state.header.sidebarShow)
+  const unfoldable = useSelector((state) => state.header.sidebarUnfoldable);
+  const sidebarShow = useSelector((state) => state.header.sidebarShow);
+
+  const repliesConsumed = 5 ;// Sample data: 5
+  const totalReplies = 20; // Sample data: 20
+
 
   return (
     <CSidebar
@@ -38,12 +42,28 @@ const AppSidebar = () => {
         <CSidebarBrand to="/">
           <img src="/logo.png" alt="logo" height={32} width={165.23} />
         </CSidebarBrand>
-        <CCloseButton className="d-lg-none" dark onClick={() => dispatch(toggleChange(false))} />
+        <CCloseButton className="d-lg-none"  onClick={() => dispatch(toggleChange(false))} />
       </CSidebarHeader>
       <AppSidebarNav items={navigation} />
       <CSidebarFooter className="border-top d-flex align-items-center justify-content-center">
         {/* <CSidebarToggler onClick={() => dispatch(toggleUnfold(!unfoldable))} /> */}
-        <div>Replies consumed</div>
+        <div className='w-100'>
+        <div><h6>Replies consumed</h6>
+        <p>{repliesConsumed} / {totalReplies}</p>
+          {/* You can also add a progress bar here if desired */}
+          <div className="progress bg-light w-100">
+            <div
+              className="progress-bar bg-success"
+              role="progressbar"
+              style={{ width: `${(repliesConsumed / totalReplies) * 100}%` }}
+              aria-valuenow={repliesConsumed}
+              aria-valuemin={0}
+              aria-valuemax={totalReplies}
+            ></div>
+          </div>
+        </div>
+        </div>
+
       </CSidebarFooter>
       
     </CSidebar>

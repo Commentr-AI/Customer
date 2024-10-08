@@ -23,7 +23,7 @@ import { useLoginMutation } from '../../../app/service/usersApiSlice'
 import { setCredentials } from '../../../app/features/auth/authSlice'
 import { toast } from 'react-toastify'
 import './Login.css' // Import the custom CSS file
-import RedditIcon from './Reddit-Icon';
+
 
 const Login = () => {
   const [email, setEmail] = useState('vemulasrinu104@gmail.com')//vemulasrinu104@gmail.com
@@ -32,7 +32,6 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { isAuthenticated } =  useSelector((state) => state.auth)
-  // console.log(isAuthenticated)
 
   const [login, { isLoading }] = useLoginMutation()
 
@@ -89,9 +88,6 @@ const Login = () => {
                 <CCardBody>
                   
                     <h1 className="login-header">Login</h1>
-                    {/* <div>
-                      <button className='btn btn-primary w-100 d-flex align-items-center justify-content-center ' onClick ={redditHandler} ><RedditIcon/><span className='ms-3'> Login with Reddit </span></button>
-                    </div> */}
                     <hr className='my-4'/>
                     <p className="text-body-secondary">Sign In to your account</p>
                     <CForm onSubmit={submitHandler}>

@@ -29,6 +29,7 @@ const AppContent = () => {
           {/* <Route path="/" element={<Navigate to="/dashboard" replace={true} />} /> */}
         </Routes>
       </Suspense>
+
     </CContainer>
   )
 }

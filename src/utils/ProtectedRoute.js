@@ -47,7 +47,7 @@ const ProtectedRoute = () => {
         position: 'relative',
       }}
     >
-      <div className="spinner-border fs-1 spinner-border-lg text-primary " style={{width:"5rem", height:"5rem", marginTop:"15%"}} role="status">
+      <div className="spinner-border fs-3 spinner-border-lg text-primary " style={{width:"5rem", height:"5rem", marginTop:"15%"}} role="status">
         <span className="visually-hidden">Loading...</span>
       </div>
     </div>

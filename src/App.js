@@ -20,7 +20,6 @@ const OTPVerification = React.lazy(()=> import("./views/pages/otpVerification/OT
 const ResetPassword =React.lazy(()=>import('./views/pages/reset/ResetPassword'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
-const Invoice = React.lazy(()=>import("./views/dashboard/Invoice"))
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
@@ -63,12 +62,7 @@ const App = () => {
             element={<ForgotPassword />}
           />
           <Route exact path="/reset-password/:token"
-          // /reset-password/:tocken
           name="Update Password Page" element={<ResetPassword />} />
-
-<Route exact path="/invoice" name="Invoice" element={<Invoice/>} />
-          
-
           <Route exact path="/404" name="Page 404" element={<Page404 />} />
           <Route exact path="/500" name="Page 500" element={<Page500 />} />
           {/* <Route

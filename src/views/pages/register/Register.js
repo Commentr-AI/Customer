@@ -19,7 +19,7 @@ import CIcon from '@coreui/icons-react'
 import { cilUser, cilLockLocked, cilPhone } from '@coreui/icons'
 import { toast } from 'react-toastify'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../../../app/service/usersApiSlice'
 import { setCredentials } from '../../../app/features/auth/authSlice'
 import RedditIcon from '../login/Reddit-Icon'
@@ -52,7 +52,7 @@ const Register = () => {
     if (id) {
       const fetchPricing = async () => {
         try {
-          const res = await axios.get(`https://api-c8tq.onrender.com/api/v1/pricings/${id}`)
+          const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/pricings/${id}`)
           //  console.log(res)
 
           setPriceData(res.data.pricing)
@@ -156,16 +156,7 @@ const Register = () => {
             <CCard className="mx-4">
               <CCardBody className="p-4">
                 <h1>Register</h1>
-                {/* <div>
-                  <button
-                    className="btn btn-primary w-100 d-flex align-items-center justify-content-center "
-                    onClick={redditHandler}
-                  >
-                    <RedditIcon />
-                    <span className="ms-3"> SignUp with Reddit </span>
-                  </button>
-                </div>
-                <hr className="my-4" /> */}
+                <hr className="my-4" /> 
                 <p className="text-body-secondary">Create your admin account</p>
                 <CForm onSubmit={submitHandler}>
                   <CInputGroup className="mb-3">
