@@ -2,7 +2,7 @@
 import React, { useEffect, useState,useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import html2pdf from "html2pdf.js";
+// import html2pdf from "html2pdf.js";
 
 import {
   CContainer,
@@ -55,17 +55,17 @@ const OrderConfirmationPage = () => {
   // }
 
   const handleDownload = () => {
-    const invoice = invoiceRef.current;
+  //   const invoice = invoiceRef.current;
 
-  const opt = {
-    margin: 1,
-    // filename: `invoice_${invoiceData.invoiceNumber}.pdf`,
-    filename: `invoice_0`,
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-  };
-  html2pdf().from(invoice).set(opt).save(); // Download the PDF
+  // const opt = {
+  //   margin: 1,
+  //   // filename: `invoice_${invoiceData.invoiceNumber}.pdf`,
+  //   filename: `invoice_0`,
+  //   image: { type: "jpeg", quality: 0.98 },
+  //   html2canvas: { scale: 2 },
+  //   jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+  // };
+  // html2pdf().from(invoice).set(opt).save(); // Download the PDF
 };
 
 
