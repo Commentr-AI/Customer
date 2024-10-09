@@ -22,7 +22,7 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../../../app/service/usersApiSlice'
 import { setCredentials } from '../../../app/features/auth/authSlice'
-import RedditIcon from '../login/Reddit-Icon'
+// import RedditIcon from '../login/Reddit-Icon'
 import axios from 'axios'
 
 const Register = () => {
@@ -41,8 +41,8 @@ const Register = () => {
   const id = queryParams.get('id')
   const billingType = queryParams.get('billingType') // Replace 'param' with your query parameter name
 
-  console.log(id)
-  console.log(billingType)
+  // console.log(id)
+  // console.log(billingType)
 
   const [register, { isLoading }] = useRegisterMutation()
 
@@ -68,7 +68,7 @@ const Register = () => {
   }, [id])
 
   useEffect(() => {
-    console.log(priceData)
+    // console.log(priceData)
   }, [priceData])
 
   useEffect(() => {

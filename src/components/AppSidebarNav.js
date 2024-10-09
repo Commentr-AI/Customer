@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux';
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar-react/dist/simplebar.min.css'
@@ -8,6 +9,13 @@ import 'simplebar-react/dist/simplebar.min.css'
 import { CBadge, CNavLink, CSidebarNav } from '@coreui/react'
 
 export const AppSidebarNav = ({ items }) => {
+
+  const user = useSelector((state) => state.auth.userInfo);
+  console.log(user);
+  const isPlanActive =user?.isPlanActive || false;
+  console.log(isPlanActive)
+
+
   const navLink = (name, icon, badge, indent = false) => {
     return (
       <>
@@ -34,7 +42,7 @@ export const AppSidebarNav = ({ items }) => {
     return (
       <Component as="div" key={index}>
         {rest.to || rest.href ? (
-          <CNavLink {...(rest.to && { as: NavLink })} {...rest}>
+          <CNavLink {...(rest.to && { as: NavLink })} {...rest} disabled={!isPlanActive} >
             {navLink(name, icon, badge, indent)}
           </CNavLink>
         ) : (
@@ -57,7 +65,7 @@ export const AppSidebarNav = ({ items }) => {
   }
 
   return (
-    <CSidebarNav as={SimpleBar}>
+    <CSidebarNav as={SimpleBar} className=''>
       {items &&
         items.map((item, index) => (item.items ? navGroup(item, index) : navItem(item, index)))}
     </CSidebarNav>

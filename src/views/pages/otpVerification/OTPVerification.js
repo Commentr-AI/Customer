@@ -9,10 +9,10 @@ import {
 } from '../../../app/service/usersApiSlice'
 import { useParams } from 'react-router-dom'
 
-import { loadStripe } from '@stripe/stripe-js'
-const stripePromise = loadStripe(
-  'pk_test_51Q79iASJoLs6JLqrlseYGNhISQxNdMt5zNDor2L46e6m6dEFTjcxD9yGSpp7K8dzlDOgULBOSxO3du478WNMc2mu00TO7mZ9xQ',
-) // Replace with your actual publishable key
+// import { loadStripe } from '@stripe/stripe-js'
+// const stripePromise = loadStripe(
+//   'pk_test_51Q79iASJoLs6JLqrlseYGNhISQxNdMt5zNDor2L46e6m6dEFTjcxD9yGSpp7K8dzlDOgULBOSxO3du478WNMc2mu00TO7mZ9xQ',
+// ) // Replace with your actual publishable key
 
 const OTPVerification = () => {
   const navigate = useNavigate()
@@ -40,29 +40,33 @@ const OTPVerification = () => {
       const res = await otpverification({ email, otp }).unwrap()
       toast.success(res.message)
       console.log(res)
-      // navigate('/login');
+      navigate('/checkout');
+      // if(res.status==200){
+      //   navigate('/checkout');
+      // }
+      
 
-      // Proceed to create a Stripe Checkout session after successful OTP verification
-      const stripe = await stripePromise
+      // // Proceed to create a Stripe Checkout session after successful OTP verification
+      // const stripe = await stripePromise
 
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getCheckoutSession`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
+      // const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getCheckoutSession`, {
+      //   method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'application/json',
          
-        },
-        credentials: "include"
+      //   },
+      //   credentials: "include"
         
-      })
+      // })
 
-      console.log(response)
+      // console.log(response)
 
-      const session = await response.json()
-      const result = await stripe.redirectToCheckout({ sessionId: session.session.id })
-      console.log(result)
-      if (result.error) {
-        toast.error(result.error.message)
-      }
+      // const session = await response.json()
+      // const result = await stripe.redirectToCheckout({ sessionId: session.session.id })
+      // console.log(result)
+      // if (result.error) {
+      //   toast.error(result.error.message)
+      // }
 
     } catch (error) {
       toast.error('Invalid OTP')

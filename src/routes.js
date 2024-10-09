@@ -1,6 +1,7 @@
-import React from 'react'
-import Profile from './views/profile/Profile'
-import ChangePassword from './views/profile/ChangePassword'
+import React from 'react';
+import Profile from './views/profile/Profile';
+import ChangePassword from './views/profile/ChangePassword';
+import CheckOut from './utils/CheckOut.js';
 import { element } from 'prop-types'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
@@ -12,6 +13,7 @@ const Plan =React.lazy(()=>import('./views/plan/Plan.js'));
 const Bilings =React.lazy(()=>import('./views/billings/Bilings.js'))
 const Keywords = React.lazy(()=>import("./views/keywords/Keywords.js"))
 const OrderSuccess = React.lazy(()=>import('./views/orderSuccess/OrderSuccess.js'))
+
 // const Blog = React.lazy(() => import('./views/Blogs/Blog.js'))
 // const AddBlog = React.lazy(() => import('./views/Blogs/AddBlog.js'))
 // const ViewBlog = React.lazy(() => import('./views/Blogs/ViewBlog.js'))
@@ -32,6 +34,7 @@ const routes = [
 
   { path: '/profile', name: 'Profile', element: Profile },
   { path: '/profile/change-password', name: 'Change Password', element: ChangePassword },
+  { path: '/checkout' , name:"Check Out", element:CheckOut}
 
   // { path: '/blog', name: 'Blog', element: Blog },
   // { path: '/blog/addnew', name: 'Add Blog', element: AddBlog },
