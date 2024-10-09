@@ -87,6 +87,10 @@ const Register = () => {
       return toast.error('Password and Confirm password are not the same.')
     }
 
+    if(!id){
+      return toast.warning("Plese select pricing")
+    }else{
+
     try {
       const res = await register({
         username: name,
@@ -104,6 +108,8 @@ const Register = () => {
       toast.error(err?.data?.message || 'err.error')
     }
   }
+
+}
 
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">

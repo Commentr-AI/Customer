@@ -11,9 +11,9 @@ import { CBadge, CNavLink, CSidebarNav } from '@coreui/react'
 export const AppSidebarNav = ({ items }) => {
 
   const user = useSelector((state) => state.auth.userInfo);
-  console.log(user);
+  // console.log(user);
   const isPlanActive =user?.isPlanActive || false;
-  console.log(isPlanActive)
+  // console.log(isPlanActive)
 
 
   const navLink = (name, icon, badge, indent = false) => {

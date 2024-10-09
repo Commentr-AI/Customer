@@ -67,7 +67,7 @@ const Login = () => {
     e.preventDefault()
     try {
       const res = await login({ email, password}).unwrap()
-      console.log(res.user)
+      // console.log(res.user)
       dispatch(setCredentials({ ...res.user }))
       toast.success('Login Successful! Welcome back!.')
       navigate('/dashboard')
@@ -120,8 +120,8 @@ const Login = () => {
                     <div className="d-flex align-items-center justify-content-between gap-3">
                       <div className='w-50'>
                         <CButton
-                          color="success"
-                          className="px-4 w-100  "
+                          color=""
+                          className="px-4 w-100 btn btn-success "
                           type="submit"
                           disabled={isLoading}
                         >
@@ -130,8 +130,8 @@ const Login = () => {
                       </div>
                       <div className='w-50 '>
                         <CButton
-                          color="danger "
-                          className="px-4 w-100"
+                          color=" "
+                          className="px-4 w-100 btn btn-danger"
                           onClick={() => {
                             setEmail('')
                             setPassword('')

@@ -35,10 +35,10 @@ const AppHeaderDropdown = () => {
   const [logoutUser, { isLoading }] = useLogoutUserMutation()
 
   const logoutHandler = async () => {
-    console.log("logout button clicked")
+    // console.log("logout button clicked")
     try {
       const res = await logoutUser()
-      console.log('logout status', res)
+      // console.log('logout status', res)
       if (res.data.status == 'success') {
         dispatch(logout())
 

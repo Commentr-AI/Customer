@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CCard, CCardHeader, CCardBody, CForm, CFormInput, CFormLabel, CButton } from '@coreui/react';
+import { CCard, CCardHeader, CCardBody, CForm, CFormInput, CFormLabel, CButton,CCol, } from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css';
 
 const InvoicePreferences = () => {
@@ -30,7 +30,8 @@ const InvoicePreferences = () => {
   };
 
   return (
-    <CCard className='w-75 d-flex align-items-center justify-content-center'>
+    <CCol className='d-flex align-items-center justify-content-center' xs={12} sm={11} md={10} lg={7}>
+    <CCard >
       <CCardHeader className='w-100'>
         <h5>Invoice Preferences</h5>
         <p className="text-muted">
@@ -141,6 +142,7 @@ const InvoicePreferences = () => {
         </CForm>
       </CCardBody>
     </CCard>
+    </CCol>
    
   );
 };

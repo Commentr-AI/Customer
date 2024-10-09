@@ -26,25 +26,29 @@ const OrderConfirmationPage = () => {
 
   const invoiceRef = useRef();
 
-  // useEffect(() => {
-  //   const fetchOrderDetails = async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `${import.meta.env.VITE_BASE_URL}/api/v1/orders/session/${sessionId}`,
-  //         { withCredentials: true }
-  //       );
-  //       setOrderDetails(res.data.order);
-  //     } catch (err) {
-  //       setError('Failed to fetch order details.');
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
 
-  //   if (sessionId) {
-  //     fetchOrderDetails();
-  //   }
-  // }, [sessionId]);
+if(orderDetails){
+  useEffect(() => {
+    const fetchOrderDetails = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/api/v1/orders/session/${sessionId}`,
+          { withCredentials: true }
+        );
+        setOrderDetails(res.data.order);
+      } catch (err) {
+        setError('Failed to fetch order details.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (sessionId) {
+      fetchOrderDetails();
+    }
+  }, [sessionId]);
+
+}
 
   // if (loading) {
   //   return (
@@ -138,7 +142,9 @@ const OrderConfirmationPage = () => {
     //     </CCol>
     //   </CRow>
     // </CContainer>
+    
     <CContainer  className="">
+      {orderDetails&&
       <CRow className="">
       
         <CCol xs={12} md={12} lg={12} ref={invoiceRef}>
@@ -189,7 +195,7 @@ const OrderConfirmationPage = () => {
         <CButton color="primary" onClick={handleDownload}><i className="bi bi-download me-2"></i>Download Receipt</CButton>
         </CCol>
       </CRow>
-
+      }
     </CContainer>
   );
 };

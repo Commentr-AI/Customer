@@ -20,8 +20,9 @@ const PricingComponent = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 //   console.log(userInfo)
-  const activePricingId =userInfo.plan.pricingId;
-  const activePricingBilling =userInfo.billingType;
+  const activePricingId =userInfo?.plan.pricingId;
+  const isActivePlan =userInfo?.isPlanActive;
+  const activePricingBilling =userInfo?.billingType;
 //   console.log(activePricingBilling)
 
   useEffect(() => {
@@ -64,10 +65,12 @@ const PricingComponent = () => {
                   <h4>{plan.title}</h4>
                   <div><span className='fs-1'>{activePricingBilling=='billed monthly' ? plan.monthlyPrice : plan.annualPrice}</span>/month</div>
                   <p className="text-muted">{activePricingBilling=='billed monthly' ? 'billed monthly' : 'billed Annuvally'}</p>
+                  {isActive && !isActivePlan && <div className='text-success'>Selected Plan</div>}
                 </CCardHeader>
 
                 {/* Card Body */}
                 <CCardBody>
+                
                   <CListGroup flush>
                     <CListGroupItem>{`${plan.replies} ${plan.replies <= 1 ? "Reply" : "Replies"}`}</CListGroupItem>
                     <CListGroupItem>{`${plan.communities} ${plan.communities <= 1 ? "Community" : "Communities"}`}</CListGroupItem>
@@ -78,9 +81,10 @@ const PricingComponent = () => {
 
                 {/* Card Footer */}
                 <CCardFooter>
-                  <CButton color={`${isActive ? 'success' : 'primary'} `} className="text-white" disabled={isActive}>
-                    {isActive ? 'Active Plan' : 'Get Started'}
+                  <CButton color={`${isActive && isActivePlan ? 'success' : 'primary'} `} className="text-white" disabled={isActive&&isActivePlan}>
+                    {isActive && isActivePlan ? 'Active Plan': 'Get Started'}
                   </CButton>
+                 
                 </CCardFooter>
               </CCard>
             </CCol>

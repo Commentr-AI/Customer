@@ -163,7 +163,6 @@ const BillingHistory = () => {
               <CTableHeaderCell>Amount</CTableHeaderCell>
               <CTableHeaderCell>Status</CTableHeaderCell>
               <CTableHeaderCell>Invoice</CTableHeaderCell>
-              <CTableHeaderCell>Action</CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
@@ -174,7 +173,6 @@ const BillingHistory = () => {
                   <CTableDataCell>{item.date}</CTableDataCell>
                   <CTableDataCell>{item.amount}</CTableDataCell>
                   <CTableDataCell>{renderStatusBadge(item.status)}</CTableDataCell>
-                  <CTableDataCell>{item.invoice}</CTableDataCell>
                   <CTableDataCell><Link to={`/billing/payment`} className='btn btn-primary'>View</Link></CTableDataCell>
 
                 </CTableRow>

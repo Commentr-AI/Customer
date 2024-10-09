@@ -4,19 +4,19 @@ import { useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const Dashboard = () => {
-  console.log('This is Dashboard page');
+  // console.log('This is Dashboard page');
 
   const [searchParams] = useSearchParams();
   const status = searchParams.get('status');
   const sessionId = searchParams.get('session_id');
-  console.log(sessionId,status)
+  // console.log(sessionId,status)
 
   const [isViewVisible, setIsViewVisible] = useState(true); // State for the View section
   const [isRedditVisible, setIsRedditVisible] = useState(true); // State for the Add Reddit section
   const user = useSelector((state) => state.auth.userInfo);
-  console.log(user);
-  const isPlanActive=user.isPlanActive;
-  console.log(isPlanActive);
+  // console.log(user);
+  const isPlanActive=  user?.isPlanActive||false;
+  // console.log(isPlanActive);
   ;
 
   const handleCloseView = () => {
@@ -45,8 +45,8 @@ const Dashboard = () => {
           <div>
             <span>Payment Successful!</span>
             <Link to={`/billing/payment?session_id=${sessionId}`}>
-            <button  className="btn ms-3 btn-success">
-              View
+            <button  className="btn ms-3 btn-success text-white">
+              View Invoice
             </button>
             </Link>
           </div>
