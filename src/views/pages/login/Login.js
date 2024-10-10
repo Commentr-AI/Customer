@@ -24,39 +24,35 @@ import { setCredentials } from '../../../app/features/auth/authSlice'
 import { toast } from 'react-toastify'
 import './Login.css' // Import the custom CSS file
 
-
 const Login = () => {
-  const [email, setEmail] = useState('vemulasrinu104@gmail.com')//vemulasrinu104@gmail.com
-  const [password, setPassword] = useState('Srinu53@')//Srinu53@
+  const [email, setEmail] = useState('chinnapothula2001@gmail.com') //vemulasrinu104@gmail.com
+  const [password, setPassword] = useState('Naveen@754') //Srinu53@
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { isAuthenticated } =  useSelector((state) => state.auth)
+  const { isAuthenticated } = useSelector((state) => state.auth)
 
   const [login, { isLoading }] = useLoginMutation()
 
   useEffect(() => {
     const fetchData = async () => {
-      
-
       const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/users/getUser`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
         credentials: 'include', // This is correct for sending cookies
-      });
-    
-      const data = await res.json();
+      })
+
+      const data = await res.json()
       // console.log(data);
 
       if (data.status === 'success') {
-        navigate('/dashboard');
+        navigate('/dashboard')
       }
-    };
-    
-    fetchData();
-    
+    }
+
+    fetchData()
   }, [navigate])
 
   // const redditHandler = ()=>{
@@ -66,7 +62,7 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
-      const res = await login({ email, password}).unwrap()
+      const res = await login({ email, password }).unwrap()
       // console.log(res.user)
       dispatch(setCredentials({ ...res.user }))
       toast.success('Login Successful! Welcome back!.')
@@ -75,7 +71,6 @@ const Login = () => {
       console.log(err)
       toast.error(err?.data?.message || err.error)
     }
-
   }
 
   return (
@@ -86,11 +81,10 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4 login-card">
                 <CCardBody>
-                  
-                    <h1 className="login-header">Login</h1>
-                    <hr className='my-4'/>
-                    <p className="text-body-secondary">Sign In to your account</p>
-                    <CForm onSubmit={submitHandler}>
+                  <h1 className="login-header">Login</h1>
+                  <hr className="my-4" />
+                  <p className="text-body-secondary">Sign In to your account</p>
+                  <CForm onSubmit={submitHandler}>
                     <CInputGroup className="mb-3 login-input-group">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
@@ -116,9 +110,9 @@ const Login = () => {
                         required
                       />
                     </CInputGroup>
-                    
+
                     <div className="d-flex align-items-center justify-content-between gap-3">
-                      <div className='w-50'>
+                      <div className="w-50">
                         <CButton
                           color=""
                           className="px-4 w-100 btn btn-success "
@@ -128,7 +122,7 @@ const Login = () => {
                           {isLoading ? <CSpinner size="sm" /> : 'Login'}
                         </CButton>
                       </div>
-                      <div className='w-50 '>
+                      <div className="w-50 ">
                         <CButton
                           color=" "
                           className="px-4 w-100 btn btn-danger"
@@ -143,8 +137,8 @@ const Login = () => {
                     </div>
                     <CRow className="login-footer">
                       <CCol className="text-start">
-                        <Link to="/forgot-password" >
-                          <CButton color="link" className="px-0 text-decoration-none" >
+                        <Link to="/forgot-password">
+                          <CButton color="link" className="px-0 text-decoration-none">
                             Forgot password?
                           </CButton>
                         </Link>
@@ -152,7 +146,10 @@ const Login = () => {
                     </CRow>
                     <CRow className="login-footer">
                       <CCol className="text-right">
-                        Don't have an account? <Link to="/register" className='text-decoration-none'>Sign Up</Link>
+                        Don't have an account?{' '}
+                        <Link to="/register" className="text-decoration-none">
+                          Sign Up
+                        </Link>
                       </CCol>
                     </CRow>
                   </CForm>

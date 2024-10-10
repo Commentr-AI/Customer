@@ -19,18 +19,18 @@ import CIcon from '@coreui/icons-react'
 import { cilUser, cilLockLocked, cilPhone } from '@coreui/icons'
 import { toast } from 'react-toastify'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 import { useRegisterMutation } from '../../../app/service/usersApiSlice'
 import { setCredentials } from '../../../app/features/auth/authSlice'
 // import RedditIcon from '../login/Reddit-Icon'
 import axios from 'axios'
 
 const Register = () => {
-  const [name, setName] = useState('Srinu')
-  const [email, setEmail] = useState('vemulasrinu104@gmail.com')
-  const [password, setPassword] = useState('Srinu53@')
-  const [repeatPassword, setRepeatPassword] = useState('Srinu53@')
-  const [priceData, setPriceData] = useState('');
+  const [name, setName] = useState('chinna')
+  const [email, setEmail] = useState('chinnapothula2001@gmail.com')
+  const [password, setPassword] = useState('Naveen@754')
+  const [repeatPassword, setRepeatPassword] = useState('Naveen@754')
+  const [priceData, setPriceData] = useState('')
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -87,29 +87,27 @@ const Register = () => {
       return toast.error('Password and Confirm password are not the same.')
     }
 
-    if(!id){
-      return toast.warning("Plese select pricing")
-    }else{
+    if (!id) {
+      return toast.warning('Plese select pricing')
+    } else {
+      try {
+        const res = await register({
+          username: name,
+          email,
+          password,
+          role: 'user',
+          plan: priceData._id,
+          billingType,
+        }).unwrap()
+        console.log(res)
 
-    try {
-      const res = await register({
-        username: name,
-        email,
-        password,
-        role: 'user',
-        plan: priceData._id,
-        billingType,
-      }).unwrap()
-      console.log(res)
-
-      toast.success(res)
-      navigate(`/otpverification/${email}`)
-    } catch (err) {
-      toast.error(err?.data?.message || 'err.error')
+        toast.success(res)
+        navigate(`/otpverification/${email}`)
+      } catch (err) {
+        toast.error(err?.data?.message || 'err.error')
+      }
     }
   }
-
-}
 
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
@@ -158,11 +156,11 @@ const Register = () => {
               </CCard>
             </CCol>
           )}
-          <CCol md={9} lg={7} xl={6} className=''>
+          <CCol md={9} lg={7} xl={6} className="">
             <CCard className="mx-4">
               <CCardBody className="p-4">
                 <h1>Register</h1>
-                <hr className="my-4" /> 
+                <hr className="my-4" />
                 <p className="text-body-secondary">Create your admin account</p>
                 <CForm onSubmit={submitHandler}>
                   <CInputGroup className="mb-3">
